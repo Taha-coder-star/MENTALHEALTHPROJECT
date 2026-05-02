@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#f1f0f2",
+                      "tertiary-container": "#bdc2c7",
+                      "primary-container": "#a8c5da",
+                      "on-secondary-fixed-variant": "#1b4b67",
+                      "tertiary-fixed": "#dfe3e8",
+                      "surface-container-low": "#f4f3f5",
+                      "on-background": "#1a1c1d",
+                      "surface": "#faf9fa",
+                      "outline": "#73787c",
+                      "inverse-surface": "#2f3032",
+                      "tertiary-fixed-dim": "#c3c7cc",
+                      "on-surface-variant": "#42474c",
+                      "outline-variant": "#c2c7cc",
+                      "secondary-fixed-dim": "#a0cced",
+                      "tertiary": "#5a5f63",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#dadadb",
+                      "surface-container-high": "#e9e8e9",
+                      "primary-fixed": "#c9e6fc",
+                      "on-primary-fixed": "#001e2d",
+                      "surface-variant": "#e3e2e3",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#faf9fa",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#171c20",
+                      "surface-container": "#eeedef",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-primary-fixed-variant": "#2e4a5b",
+                      "on-secondary-container": "#36627f",
+                      "primary": "#466274",
+                      "on-surface": "#1a1c1d",
+                      "secondary": "#376380",
+                      "on-secondary-fixed": "#001e2f",
+                      "background": "#faf9fa",
+                      "surface-container-highest": "#e3e2e3",
+                      "on-tertiary-container": "#4b5054",
+                      "primary-fixed-dim": "#adcadf",
+                      "on-tertiary-fixed-variant": "#42474b",
+                      "on-primary-container": "#365264",
+                      "inverse-primary": "#adcadf",
+                      "surface-tint": "#466274",
+                      "secondary-container": "#b1ddff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "lg": "32px",
+                      "xl": "64px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "h3": ["Times New Roman", "serif"],
+                      "body-lg": ["Inter"],
+                      "h2": ["Times New Roman", "serif"],
+                      "h1": ["Times New Roman", "serif"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Shared Component Logic) -->
+<header class="sticky top-0 z-50 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center w-full px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a serene woman in her late 20s, looking away with a soft smile. The lighting is warm and natural, creating a soft glow on her face against a minimalist, bright interior background. The aesthetic is clean and modern, following a light-mode palette with muted tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxyCssY5wdwy4H4dqkM2icrZ2-m7kBblMKNI4vUfzb_T7qi6AjzZWNZx5dD2TS5W-Vn1YHhvfDN46_xmHG8K3_o9AnEVGxNDiQiJM94grt75PkBwTiFkcmqHOi0xwGPIqBWYEylC-NrT5oGlWB39iBR_yPCPlx4NczzkCfHhu--pQhKjpmyT8OSE9j_hwIMazrsGD3nq8himG89MOatQq_doh_cMeJkM9wtcvrPgslFO0243YWPyOuQ4X-sozUpEvH89etx7AOSBo"/>
+</div>
+<div class="flex flex-col">
+<h1 class="font-h3 text-h3 text-sky-900 leading-none">Circle</h1>
+<span class="text-[10px] tracking-widest text-outline uppercase font-bold">Anonymous</span>
+</div>
+</div>
+<button class="material-symbols-outlined text-sky-900 hover:bg-slate-100 p-2 rounded-full transition-colors">notifications</button>
+</header>
+<main class="flex-grow w-full max-w-5xl mx-auto flex flex-col md:flex-row">
+<!-- Brand Message (Left 45%) -->
+<section class="hidden md:flex md:w-[45%] bg-primary-container/20 p-xl flex-col justify-center border-r border-outline-variant/10">
+<h2 class="font-h1 text-h1 text-primary mb-md">A space for shared stillness.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm">
+                Connect with others through the quiet language of the heart. No names, only intentions.
+            </p>
+<div class="mt-xl">
+<div class="bg-white/60 p-md rounded-xl border border-outline-variant/30 backdrop-blur-sm">
+<p class="font-h3 italic text-primary">"Gratitude is the memory of the heart."</p>
+</div>
+</div>
+</section>
+<!-- Functional UI (Right 55% or Mobile Full) -->
+<section class="w-full md:w-[55%] bg-surface-container-lowest p-gutter space-y-md">
+<!-- Compose Bar -->
+<div class="p-md bg-surface-container-low rounded-xl border border-outline-variant/20 flex items-center gap-md hover:border-primary transition-colors cursor-text">
+<span class="material-symbols-outlined text-outline">edit</span>
+<span class="text-on-surface-variant font-body-md">Share what's on your heart...</span>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-sm overflow-x-auto pb-xs scrollbar-hide">
+<button class="px-md py-xs rounded-full bg-primary text-on-primary font-label-sm whitespace-nowrap">All</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm whitespace-nowrap hover:bg-surface-container-high transition-colors">Personal</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm whitespace-nowrap hover:bg-surface-container-high transition-colors">Growth</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-sm whitespace-nowrap hover:bg-surface-container-high transition-colors">Gratitude</button>
+</div>
+<!-- Feed Post 1 -->
+<article class="bg-surface-container-low p-md rounded-xl border-b border-outline-variant/10">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<h4 class="font-label-sm text-on-background">Grateful Soul</h4>
+<p class="text-[10px] text-outline uppercase tracking-wider">Just Now • Gratitude</p>
+</div>
+</div>
+<p class="font-h3 text-on-surface mb-lg">
+                    Finding peace in the simple morning light today. The world feels a little softer when we take a moment to just breathe.
+                </p>
+<div class="flex items-center gap-lg border-t border-outline-variant/10 pt-md">
+<button class="flex items-center gap-xs text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm">Hug</span>
+</button>
+<button class="flex items-center gap-xs text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm">Reply</span>
+</button>
+</div>
+</article>
+<!-- Feed Post 2 -->
+<article class="bg-surface-container-low p-md rounded-xl border-b border-outline-variant/10">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div>
+<h4 class="font-label-sm text-on-background">Steady Heart</h4>
+<p class="text-[10px] text-outline uppercase tracking-wider">15m ago • Growth</p>
+</div>
+</div>
+<p class="font-h3 text-on-surface mb-lg">
+                    Learning that letting go isn't a single act, but a practice. Today, I am choosing to release the need to control every outcome.
+                </p>
+<div class="flex items-center gap-lg border-t border-outline-variant/10 pt-md">
+<button class="flex items-center gap-xs text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm">Hug</span>
+</button>
+<button class="flex items-center gap-xs text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm">Reply</span>
+</button>
+</div>
+</article>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Execution) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 transition-colors" href="#">
+<span class="material-symbols-outlined">home_health</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 transition-colors" href="#">
+<span class="material-symbols-outlined">self_improvement</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Reflect</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-sky-50 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full px-5 py-1 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Circle</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 transition-colors" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Journal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Read</span>
+</a>
+</nav>
+<!-- Spacer for Bottom Nav -->
+<div class="h-20 w-full"></div>
+</body></html>

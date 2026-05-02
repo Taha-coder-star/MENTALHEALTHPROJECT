@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#42474c",
+                      "inverse-primary": "#adcadf",
+                      "surface-tint": "#466274",
+                      "primary-container": "#a8c5da",
+                      "inverse-on-surface": "#f1f0f2",
+                      "secondary": "#376380",
+                      "surface-container-high": "#e9e8e9",
+                      "surface-container": "#eeedef",
+                      "outline": "#73787c",
+                      "on-tertiary-fixed": "#171c20",
+                      "surface-container-highest": "#e3e2e3",
+                      "on-surface": "#1a1c1d",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#1b4b67",
+                      "inverse-surface": "#2f3032",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#466274",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1a1c1d",
+                      "surface-variant": "#e3e2e3",
+                      "surface-container-low": "#f4f3f5",
+                      "tertiary-container": "#bdc2c7",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#365264",
+                      "tertiary-fixed-dim": "#c3c7cc",
+                      "secondary-fixed": "#c9e6ff",
+                      "secondary-fixed-dim": "#a0cced",
+                      "primary-fixed": "#c9e6fc",
+                      "surface": "#faf9fa",
+                      "on-tertiary-fixed-variant": "#42474b",
+                      "on-primary-fixed-variant": "#2e4a5b",
+                      "on-primary-fixed": "#001e2d",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#b1ddff",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#4b5054",
+                      "on-secondary": "#ffffff",
+                      "background": "#faf9fa",
+                      "tertiary": "#5a5f63",
+                      "tertiary-fixed": "#dfe3e8",
+                      "surface-dim": "#dadadb",
+                      "on-secondary-container": "#36627f",
+                      "primary-fixed-dim": "#adcadf",
+                      "outline-variant": "#c2c7cc",
+                      "on-secondary-fixed": "#001e2f",
+                      "surface-bright": "#faf9fa"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "64px",
+                      "sm": "8px",
+                      "lg": "32px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "h1": ["Times New Roman", "serif"],
+                      "h3": ["Times New Roman", "serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "h2": ["Times New Roman", "serif"],
+                      "label-sm": ["Inter", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .serif-text { font-family: 'Times New Roman', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-950 flex items-center justify-between px-6 py-4 w-full border-b border-slate-100 dark:border-slate-800 sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sky-600 dark:text-sky-400" data-icon="spa">spa</span>
+<span class="font-h1 text-[24px] font-bold text-slate-900 dark:text-slate-50 tracking-tighter">Serenity</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a serene woman with a peaceful expression, captured in soft natural daylight. The lighting is high-key and airy, creating a clean, minimalist aesthetic. The background is a soft, out-of-focus neutral tone that complements the light-mode UI design. The overall mood is professional, calm, and trustworthy, perfectly aligning with a wellness and mental health application's visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByiLQCXUpoxMaOhZ4S2FQ_VLQVO5a8qc9TjR-AFgo8rZj-W2q5kAIHw21L7nw1d89pC8cnjngspH1_poci1906qSTzdgO_M9vnEriv8agb7Ue55EL_BzcahGX0NtimVDEaBzmg8NOEGjyacsdKUrjH-7fCqiEKH5d5NHb2n0uDtqNXlROWet_FUQPkVbV6BgOd9YEIBEOUkQPog6gReZO7o4zChs5ruPESLgGfnEU0elT30XFBhfWfI9cav-aEiQ24pX-WJnjor4Q"/>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto flex flex-col md:flex-row min-h-screen">
+<!-- Left Column: Branding/Hero -->
+<div class="w-full md:w-[45%] bg-secondary-container/20 p-lg flex flex-col justify-center">
+<h1 class="font-h1 text-h1 serif-text text-on-secondary-container mb-md">Read &amp; listen</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs">
+                Explore our curated library of wisdom designed to help you navigate life's complexities with grace.
+            </p>
+<div class="mt-lg hidden md:block">
+<img alt="Serene Landscape" class="rounded-xl w-full h-48 object-cover opacity-80 border border-outline/10" data-alt="A minimalist photograph of a single rowboat on a perfectly still lake during a misty morning. The color palette is dominated by soft sky blues and muted grays, creating a profound sense of isolation and tranquility. The composition is clean and asymmetrical, following a minimalist artistic direction that emphasizes negative space and mental clarity. High-key lighting ensures a bright, serene atmosphere consistent with a flat-first design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZTelnX4bgXS9Xi1by5pDi4Lp2XhXOO6G93IcrUTPwfu7QgZg-TvgMEUQoB6KL5KgxNO_8OuxoKCAizj1xS5YhjBG4CSVIQMdZeKESPkjKMmeisw734Z5rBeWPqdYlr8Mxsal1D0auXgFvQLhtbww4PvskYqjLiBCr-q7pMyxdLY2M3sCWSC5KwLyrWp0uZGMkCeuH3OXg-E0wg2zDe1x7ZCRYN1vyfawUt1GXvImixPBjjDxVxjBMqe81Lk3GnyLEdemrBX19TRI"/>
+</div>
+</div>
+<!-- Right Column: Interactive Content -->
+<div class="w-full md:w-[55%] bg-white p-lg pb-xl">
+<!-- 2x2 Grid Category Cards -->
+<div class="grid grid-cols-2 gap-md mb-lg">
+<!-- Card 1: Exam stress -->
+<div class="bg-[#e0f2fe] p-md rounded-xl flex flex-col justify-between aspect-square border border-outline/5 hover:bg-[#d0eafb] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="menu_book">menu_book</span>
+<h3 class="font-h3 text-lg serif-text text-on-primary-container">Exam stress</h3>
+</div>
+<!-- Card 2: Sleep -->
+<div class="bg-[#f0fdf4] p-md rounded-xl flex flex-col justify-between aspect-square border border-outline/5 hover:bg-[#dcfce7] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-green-700 text-3xl" data-icon="bedtime">bedtime</span>
+<h3 class="font-h3 text-lg serif-text text-green-900">Sleep</h3>
+</div>
+<!-- Card 3: Faith & calm -->
+<div class="bg-[#f5f3ff] p-md rounded-xl flex flex-col justify-between aspect-square border border-outline/5 hover:bg-[#ede9fe] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-purple-700 text-3xl" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-h3 text-lg serif-text text-purple-900">Faith &amp; calm</h3>
+</div>
+<!-- Card 4: Family -->
+<div class="bg-[#fefce8] p-md rounded-xl flex flex-col justify-between aspect-square border border-outline/5 hover:bg-[#fef9c3] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-yellow-700 text-3xl" data-icon="family_restroom">family_restroom</span>
+<h3 class="font-h3 text-lg serif-text text-yellow-900">Family</h3>
+</div>
+</div>
+<!-- Article List Section -->
+<div class="space-y-sm">
+<div class="flex items-center justify-between mb-sm">
+<h4 class="font-label-sm uppercase tracking-widest text-on-surface-variant">Latest Articles</h4>
+<span class="text-primary font-label-sm cursor-pointer">See all</span>
+</div>
+<!-- Row 1: Finding Focus -->
+<div class="flex items-center p-md bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors cursor-pointer border border-transparent hover:border-outline/10">
+<div class="w-10 h-10 rounded bg-white flex items-center justify-center mr-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="book">book</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-medium text-on-surface">Finding Focus</p>
+<p class="text-label-sm text-on-surface-variant">5 min read • Concentration</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Row 2: Night Rituals -->
+<div class="flex items-center p-md bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors cursor-pointer border border-transparent hover:border-outline/10">
+<div class="w-10 h-10 rounded bg-white flex items-center justify-center mr-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="brightness_2">brightness_2</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-medium text-on-surface">Night Rituals</p>
+<p class="text-label-sm text-on-surface-variant">8 min read • Wellness</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Row 3: Inner Peace -->
+<div class="flex items-center p-md bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors cursor-pointer border border-transparent hover:border-outline/10">
+<div class="w-10 h-10 rounded bg-white flex items-center justify-center mr-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="favorite">favorite</span>
+</div>
+<div class="flex-1">
+<p class="font-body-md font-medium text-on-surface">Inner Peace</p>
+<p class="text-label-sm text-on-surface-variant">12 min read • Meditation</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full bg-white dark:bg-slate-950 flex justify-around items-center px-4 py-3 pb-safe border-t border-slate-100 dark:border-slate-900 z-50">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 dark:hover:text-sky-300 transition-colors">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Home</span>
+</button>
+<!-- Reflect -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 dark:hover:text-sky-300 transition-colors">
+<span class="material-symbols-outlined" data-icon="self_improvement">self_improvement</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Reflect</span>
+</button>
+<!-- Breathe -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 dark:hover:text-sky-300 transition-colors">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Breathe</span>
+</button>
+<!-- Journal -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-sky-500 dark:hover:text-sky-300 transition-colors">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Journal</span>
+</button>
+<!-- Read (ACTIVE) -->
+<button class="flex flex-col items-center justify-center text-sky-600 dark:text-sky-400 bg-slate-50 dark:bg-slate-900 rounded-xl px-3 py-1 scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu_book" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="text-[11px] font-medium tracking-wide uppercase mt-1">Read</span>
+</button>
+</nav>
+</body></html>

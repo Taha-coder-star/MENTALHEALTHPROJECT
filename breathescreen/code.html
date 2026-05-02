@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MindEase - Breathe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#adcadf",
+                    "surface-bright": "#faf9fa",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#365264",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001e2d",
+                    "tertiary": "#5a5f63",
+                    "on-surface": "#1a1c1d",
+                    "on-secondary-fixed-variant": "#1b4b67",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#36627f",
+                    "surface-container": "#eeedef",
+                    "primary-fixed": "#c9e6fc",
+                    "on-tertiary-container": "#4b5054",
+                    "surface": "#faf9fa",
+                    "secondary-fixed-dim": "#a0cced",
+                    "secondary-fixed": "#c9e6ff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c2c7cc",
+                    "on-surface-variant": "#42474c",
+                    "secondary-container": "#b1ddff",
+                    "surface-container-high": "#e9e8e9",
+                    "surface-dim": "#dadadb",
+                    "surface-variant": "#e3e2e3",
+                    "on-tertiary-fixed": "#171c20",
+                    "surface-tint": "#466274",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#42474b",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f4f3f5",
+                    "secondary": "#376380",
+                    "tertiary-container": "#bdc2c7",
+                    "primary": "#466274",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1d",
+                    "outline": "#73787c",
+                    "surface-container-highest": "#e3e2e3",
+                    "background": "#faf9fa",
+                    "inverse-surface": "#2f3032",
+                    "primary-fixed-dim": "#adcadf",
+                    "on-primary-fixed-variant": "#2e4a5b",
+                    "on-secondary-fixed": "#001e2f",
+                    "tertiary-fixed": "#dfe3e8",
+                    "tertiary-fixed-dim": "#c3c7cc",
+                    "primary-container": "#a8c5da",
+                    "inverse-on-surface": "#f1f0f2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "unit": "8px",
+                    "lg": "32px",
+                    "gutter": "24px",
+                    "md": "16px",
+                    "xl": "64px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "h2": ["Times New Roman", "serif"],
+                    "h1": ["Times New Roman", "serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "label-sm": ["Inter", "sans-serif"],
+                    "h3": ["Times New Roman", "serif"]
+            },
+            "fontSize": {
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Times New Roman', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-container min-h-screen text-on-surface selection:bg-primary/20">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 w-full flex items-center justify-between px-6 h-16 w-full bg-[#A8C5DA] dark:bg-slate-900 border-b border-slate-900/10 z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100" data-icon="spa">spa</span>
+<span class="text-xl font-bold text-slate-900 dark:text-slate-100 font-serif tracking-tight">MindEase</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-900 dark:text-white font-semibold font-serif tracking-tight transition-colors duration-200" href="#">Breathe</a>
+<a class="text-slate-700 dark:text-slate-400 font-serif tracking-tight hover:bg-white/10 transition-colors duration-200" href="#">Meditate</a>
+<a class="text-slate-700 dark:text-slate-400 font-serif tracking-tight hover:bg-white/10 transition-colors duration-200" href="#">Sleep</a>
+<a class="text-slate-700 dark:text-slate-400 font-serif tracking-tight hover:bg-white/10 transition-colors duration-200" href="#">Journal</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-900 dark:text-slate-100 hover:bg-white/10 p-2 rounded-full transition-colors" data-icon="account_circle">account_circle</button>
+</div>
+</header>
+<main class="pt-24 pb-32 flex flex-col items-center justify-center min-h-screen px-gutter text-center">
+<!-- Header -->
+<h1 class="font-h1 text-h1 text-primary-fixed-variant mb-xl max-w-2xl leading-tight">
+            Breathe with the circle.
+        </h1>
+<!-- Visual Centerpiece: Concentric Circles -->
+<div class="relative flex items-center justify-center w-64 h-64 md:w-80 md:h-80 mb-xl">
+<!-- Outer Ring -->
+<div class="absolute inset-0 border border-white/40 rounded-full scale-100"></div>
+<!-- Middle Ring -->
+<div class="absolute inset-4 border border-white/60 rounded-full scale-100"></div>
+<!-- Inner Ring -->
+<div class="absolute inset-8 border border-white/80 rounded-full scale-100"></div>
+<!-- Pulse Core -->
+<div class="w-32 h-32 md:w-40 md:h-40 bg-white rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="air" data-weight="fill" style="font-variation-settings: 'FILL' 1;">air</span>
+</div>
+</div>
+<!-- Phase Indicators -->
+<div class="flex flex-wrap justify-center gap-md mb-xl">
+<div class="px-lg py-2 rounded-full bg-primary text-white font-body-md shadow-sm">
+                Inhale
+            </div>
+<div class="px-lg py-2 rounded-full border border-white/30 text-white/70 font-body-md">
+                Hold
+            </div>
+<div class="px-lg py-2 rounded-full border border-white/30 text-white/70 font-body-md">
+                Exhale
+            </div>
+<div class="px-lg py-2 rounded-full border border-white/30 text-white/70 font-body-md">
+                Hold
+            </div>
+</div>
+<!-- Controls -->
+<div class="flex items-center gap-xl">
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-white/80 group-hover:text-white" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-lg hover:scale-105 transition-transform active:scale-95 group">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="pause" data-weight="fill" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined text-white/80 group-hover:text-white" data-icon="timer">timer</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar from JSON -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-4 bg-white/90 dark:bg-slate-950/90 border-t border-slate-100 dark:border-slate-800 md:hidden">
+<a class="flex flex-col items-center justify-center text-slate-900 dark:text-white bg-[#A8C5DA] rounded-full px-4 py-1 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="text-[10px] font-medium uppercase tracking-widest">Breathe</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="self_improvement">self_improvement</span>
+<span class="text-[10px] font-medium uppercase tracking-widest">Meditate</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="bedtime">bedtime</span>
+<span class="text-[10px] font-medium uppercase tracking-widest">Sleep</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="text-[10px] font-medium uppercase tracking-widest">Journal</span>
+</a>
+</nav>
+<!-- Visual Polish: Content Image as background subtlety (optional contextual element) -->
+<div class="fixed inset-0 -z-10 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="A serene landscape with a soft morning fog over a calm mountain lake. The color palette consists of muted sky blues and soft misty whites. The lighting is ethereal and diffused, creating a mood of absolute tranquility and mental clarity. This minimalist environment complements a flat design aesthetic with its vast negative space and peaceful atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzjCakftLqrNgvsp_V-KXBDKf2pQVXKsXH6cVpw_jDt78ALroNAh5jUcaHxjnN6C6uFGZEh8KngI7YI37I87KGvCoqqoss5p_eg2m7l9kSShhXdx0eQCdsD13gtPN6VL_ukKDgLrfoMeMIDyuYWjp-9arbv7-qQU0XkRyDlDGLjvGAQxjpJPwiR1Jhe-hbYtSMSxLSwdTGlMTjS73N6xOAhCIjtfmHunU9MVRzFgJSdg8U34yjXSJXIUH5i_pGCyHJR_FNXdbj1oo"/>
+</div>
+</body></html>

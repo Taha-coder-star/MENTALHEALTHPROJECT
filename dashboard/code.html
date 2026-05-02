@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#2e4a5b",
+                    "outline": "#73787c",
+                    "inverse-on-surface": "#f1f0f2",
+                    "primary-container": "#a8c5da",
+                    "surface-container": "#eeedef",
+                    "surface-container-high": "#e9e8e9",
+                    "secondary": "#376380",
+                    "on-tertiary-container": "#4b5054",
+                    "surface-variant": "#e3e2e3",
+                    "on-tertiary-fixed-variant": "#42474b",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f3032",
+                    "error": "#ba1a1a",
+                    "primary": "#466274",
+                    "on-background": "#1a1c1d",
+                    "secondary-container": "#b1ddff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#1b4b67",
+                    "surface": "#faf9fa",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#365264",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#001e2f",
+                    "tertiary-container": "#bdc2c7",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#36627f",
+                    "on-tertiary-fixed": "#171c20",
+                    "surface-bright": "#faf9fa",
+                    "tertiary": "#5a5f63",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#a0cced",
+                    "inverse-primary": "#adcadf",
+                    "surface-container-highest": "#e3e2e3",
+                    "background": "#faf9fa",
+                    "tertiary-fixed": "#dfe3e8",
+                    "primary-fixed": "#c9e6fc",
+                    "tertiary-fixed-dim": "#c3c7cc",
+                    "outline-variant": "#c2c7cc",
+                    "on-primary-fixed": "#001e2d",
+                    "surface-tint": "#466274",
+                    "on-surface-variant": "#42474c",
+                    "on-surface": "#1a1c1d",
+                    "surface-dim": "#dadadb",
+                    "secondary-fixed": "#c9e6ff",
+                    "surface-container-low": "#f4f3f5",
+                    "primary-fixed-dim": "#adcadf",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "lg": "32px",
+                    "xl": "64px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "h3": ["Times New Roman"],
+                    "h1": ["Times New Roman"],
+                    "h2": ["Times New Roman"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+        .serif-text { font-family: 'Times New Roman', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest min-h-screen text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar (from JSON) -->
+<header class="bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center px-4 h-16 w-full sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<img alt="Ayesha's profile picture" class="w-10 h-10 rounded-full object-cover grayscale" data-alt="A close-up portrait of a serene woman with a soft expression, captured in high-key lighting that emphasizes a minimalist and clean aesthetic. The setting is a bright, white studio with subtle shadows, creating a professional and calm atmosphere. The image uses a monochromatic palette with soft grey tones to align with a disciplined, minimalist design language. The lighting is even and gentle, avoiding any harsh contrasts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ0ItE4ObrxQi-fJC6qa2hyL4yzQh98ReCWMljHu79-hn3zY_d545g_HJ7g-Y6v7YGvzTGuElqIi0cRSGlmeTiDxXe8hUvP3AOhG3dM4pHLIpfSpmknPxF0pNMmmkNPp2NoGnjQ5bnzk7Wu2OEsjtVXFvmOG2Z6qwb0XVcw_SOL9oE4ViCRtUbU1XbQOtQ1ZC9xMPk-8jnJBj7pktg4vJWxYR_zjPvQlWTm9fV_KTASpFwCOc8HwAJtlgzNk0xstvmxxC8j57OEQc"/>
+<span class="text-xl font-bold text-sky-900 dark:text-sky-100 serif-text">MindEase</span>
+</div>
+<button class="p-2 rounded-full hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="max-w-2xl mx-auto px-gutter py-lg pb-32">
+<!-- Personalized Greeting -->
+<section class="mb-lg">
+<h1 class="font-h2 text-h2 serif-text text-on-background mb-sm">Assalamu alaikum, Ayesha.</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">How is your heart feeling today?</p>
+</section>
+<!-- Verse Card -->
+<section class="mb-lg">
+<div class="bg-secondary p-lg rounded-xl flex flex-col gap-md border border-secondary">
+<span class="font-label-sm text-label-sm text-on-secondary/80 uppercase tracking-widest">Daily Reminder</span>
+<p class="font-h3 text-h3 serif-text text-on-secondary leading-relaxed">
+                    "Verily, in the remembrance of Allah do hearts find rest."
+                </p>
+<div class="flex justify-between items-center mt-sm">
+<span class="font-body-md text-label-sm text-on-secondary/90 italic">Ar-Ra'd 13:28</span>
+<span class="material-symbols-outlined text-on-secondary" data-icon="share">share</span>
+</div>
+</div>
+</section>
+<!-- Mood Tracker -->
+<section class="mb-lg">
+<h3 class="font-body-md font-semibold text-on-surface mb-md">Current Mood</h3>
+<div class="flex justify-between items-center bg-surface-container-low p-md rounded-xl border border-outline-variant/15">
+<button class="flex flex-col items-center gap-xs group">
+<span class="text-2xl grayscale group-hover:grayscale-0 transition-all">😊</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Happy</span>
+</button>
+<button class="flex flex-col items-center gap-xs group">
+<span class="text-2xl grayscale group-hover:grayscale-0 transition-all">😌</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Calm</span>
+</button>
+<button class="flex flex-col items-center gap-xs group">
+<span class="text-2xl grayscale group-hover:grayscale-0 transition-all">😐</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Neutral</span>
+</button>
+<button class="flex flex-col items-center gap-xs group">
+<span class="text-2xl grayscale group-hover:grayscale-0 transition-all">😔</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sad</span>
+</button>
+<button class="flex flex-col items-center gap-xs group">
+<span class="text-2xl grayscale group-hover:grayscale-0 transition-all">😟</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Anxious</span>
+</button>
+</div>
+</section>
+<!-- Quick Actions Grid -->
+<section class="mb-lg">
+<h3 class="font-body-md font-semibold text-on-surface mb-md">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container flex flex-col p-lg rounded-xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="bg-white w-10 h-10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="task_alt">task_alt</span>
+</div>
+<span class="font-body-md font-medium text-on-surface">Check in</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Log your day</span>
+</div>
+<div class="bg-surface-container flex flex-col p-lg rounded-xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="bg-white w-10 h-10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="air">air</span>
+</div>
+<span class="font-body-md font-medium text-on-surface">Breathe</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Calm exercise</span>
+</div>
+<div class="bg-surface-container flex flex-col p-lg rounded-xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="bg-white w-10 h-10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="edit_note">edit_note</span>
+</div>
+<span class="font-body-md font-medium text-on-surface">Journal</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Write thoughts</span>
+</div>
+<div class="bg-surface-container flex flex-col p-lg rounded-xl border border-outline-variant/10 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="bg-white w-10 h-10 rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="menu_book">menu_book</span>
+</div>
+<span class="font-body-md font-medium text-on-surface">Read</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Soul wisdom</span>
+</div>
+</div>
+</section>
+<!-- Additional Minimalist Section: Activity Summary -->
+<section class="mt-xl border-t border-surface-variant pt-lg">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-body-md font-semibold text-on-surface">Weekly Balance</h3>
+<span class="text-secondary font-label-sm">View Insights</span>
+</div>
+<div class="h-1 bg-surface-variant w-full rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary w-3/4"></div>
+<div class="h-full bg-primary-container w-1/4"></div>
+</div>
+<div class="flex justify-between mt-sm">
+<span class="font-label-sm text-on-surface-variant">Reflection: 75%</span>
+<span class="font-label-sm text-on-surface-variant">Reading: 25%</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+<!-- Home (Active) -->
+<button class="flex flex-col items-center justify-center text-sky-600 dark:text-sky-300 bg-sky-50 dark:bg-sky-900/20 rounded-2xl px-3 py-1 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-medium tracking-wide">Home</span>
+</button>
+<!-- Reflect -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-sky-500 dark:hover:text-sky-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="text-[10px] font-medium tracking-wide">Reflect</span>
+</button>
+<!-- Breathe -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-sky-500 dark:hover:text-sky-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="air">air</span>
+<span class="text-[10px] font-medium tracking-wide">Breathe</span>
+</button>
+<!-- Journal -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-sky-500 dark:hover:text-sky-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="text-[10px] font-medium tracking-wide">Journal</span>
+</button>
+<!-- Read -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-sky-500 dark:hover:text-sky-200 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] font-medium tracking-wide">Read</span>
+</button>
+</nav>
+</body></html>

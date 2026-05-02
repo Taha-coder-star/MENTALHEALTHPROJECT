@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#dfe3e8",
+                    "tertiary-container": "#bdc2c7",
+                    "primary-container": "#a8c5da",
+                    "on-secondary-fixed-variant": "#1b4b67",
+                    "surface": "#faf9fa",
+                    "surface-container-low": "#f4f3f5",
+                    "on-background": "#1a1c1d",
+                    "tertiary-fixed-dim": "#c3c7cc",
+                    "on-surface-variant": "#42474c",
+                    "outline": "#73787c",
+                    "inverse-surface": "#2f3032",
+                    "inverse-on-surface": "#f1f0f2",
+                    "surface-dim": "#dadadb",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#a0cced",
+                    "outline-variant": "#c2c7cc",
+                    "tertiary": "#5a5f63",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e3e2e3",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#faf9fa",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#171c20",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eeedef",
+                    "surface-container-high": "#e9e8e9",
+                    "primary-fixed": "#c9e6fc",
+                    "on-primary-fixed": "#001e2d",
+                    "background": "#faf9fa",
+                    "secondary": "#376380",
+                    "on-secondary-fixed": "#001e2f",
+                    "primary-fixed-dim": "#adcadf",
+                    "on-tertiary-fixed-variant": "#42474b",
+                    "on-primary-container": "#365264",
+                    "inverse-primary": "#adcadf",
+                    "surface-container-highest": "#e3e2e3",
+                    "on-tertiary-container": "#4b5054",
+                    "secondary-container": "#b1ddff",
+                    "surface-tint": "#466274",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-primary-fixed-variant": "#2e4a5b",
+                    "on-secondary-container": "#36627f",
+                    "primary": "#466274",
+                    "on-surface": "#1a1c1d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "xl": "64px",
+                    "lg": "32px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "unit": "8px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "h3": ["Times New Roman", "serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "h2": ["Times New Roman", "serif"],
+                    "h1": ["Times New Roman", "serif"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h2": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { background-color: #faf9fa; color: #1a1c1d; -webkit-font-smoothing: antialiased; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-slate-950 border-b border-[#5E89A8]/10 dark:border-white/10 docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full px-6 h-16 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#5E89A8] dark:text-[#A8C5DA]" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-serif italic text-2xl text-[#5E89A8] dark:text-[#A8C5DA]">MindEase</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#A8C5DA]/10 dark:hover:bg-white/5 transition-colors text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#A8C5DA]/10 dark:hover:bg-white/5 transition-colors text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow pb-24">
+<!-- 45/55 Presentation Split Container -->
+<div class="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto">
+<!-- Left Column: Branding/Messaging (45%) -->
+<div class="hidden md:flex md:w-[45%] bg-primary-container/20 p-gutter flex-col justify-center min-h-[calc(100vh-64px)]">
+<div class="max-w-md mx-auto">
+<h2 class="font-h1 text-h1 text-primary mb-md">Journaling for Clarity.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Take a moment to process your thoughts and find your center in a world of noise.</p>
+<div class="mt-lg">
+<img class="w-full aspect-[4/3] object-cover rounded-xl border border-outline-variant/30" data-alt="A serene and minimalist still life composition featuring a high-quality linen journal and a professional fountain pen resting on a light oak surface. The scene is bathed in soft, diffused morning light coming from a nearby window, creating gentle shadows and a calm, reflective mood. The color palette is dominated by soft creams, warm wood tones, and subtle hints of sky blue, emphasizing a professional and peaceful mental health aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9C9H8sqQ2mc_MOJ5f6XDFpoJf3fdv0BYrHwLJskqVG1sQxJv27U2Nw_kgLQRtuqf6DyegqpDT-iEVft6rZ1SZ1UlGlZziqqhsA5T34BSv9Uk-gsB72qkj7IL3yUDr798pR2Lmf4QcxkFipnLcEm1BPepH07Ggs4qp-RIgr45G_wkB3FHDTjx18SrySxCmE7NLbXFbNRm3rIDFiSxyX4CxqDHA2UaIENl887__14h9NYF9hCqjWYynnSqeZw09LJP6zz37znQuKIU"/>
+</div>
+</div>
+</div>
+<!-- Right Column: Content (55% or 100% on mobile) -->
+<div class="w-full md:w-[55%] bg-white p-gutter">
+<div class="max-w-2xl mx-auto">
+<!-- Header with Date -->
+<div class="mb-lg">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-xs">Monday, October 24</p>
+<!-- Mood Tags -->
+<div class="flex flex-wrap gap-2 mt-md">
+<span class="px-4 py-1.5 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant border border-outline-variant/10">Calm</span>
+<span class="px-4 py-1.5 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant border border-outline-variant/10">Reflective</span>
+<span class="px-4 py-1.5 bg-primary-container/30 rounded-full font-label-sm text-label-sm text-primary border border-primary/10">Grateful</span>
+</div>
+</div>
+<!-- Journal Entry Section -->
+<article class="mb-xl">
+<h1 class="font-h1 text-h1 text-on-background mb-md">Evening Reflection</h1>
+<div class="font-h3 text-h3 text-on-surface leading-relaxed text-slate-700 space-y-6">
+<p>
+                                Today felt like a slow tide pulling away from the shore, leaving behind a clear, damp stretch of sand. I found myself noticing the smaller details—the way the light caught the edge of my coffee cup, the quiet hum of the heater, the rhythmic breathing of the city outside my window. There is a specific kind of peace that comes when you stop trying to manage the chaos and simply exist within it. 
+                            </p>
+<p>
+                                I am learning that reflection isn't just about looking back; it's about seeing where I am standing right now. I feel grounded, though perhaps a bit tired from the week's demands. It is enough to be here, in this quiet room, with these words.
+                            </p>
+</div>
+</article>
+<!-- Past Entries Section -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-h3 text-h3 text-on-background">Past Entries</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline transition-all">View All</button>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-md">
+<!-- Card 1 -->
+<div class="flex-shrink-0 w-48 p-4 bg-surface-container rounded-lg border border-outline-variant/10 transition-all hover:bg-surface-container-high">
+<p class="font-label-sm text-label-sm text-primary mb-2">Oct 23</p>
+<p class="font-body-md text-body-md font-medium text-on-background line-clamp-1 mb-2">The Morning Mist</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">Walking through the park today felt like...</p>
+</div>
+<!-- Card 2 -->
+<div class="flex-shrink-0 w-48 p-4 bg-surface-container rounded-lg border border-outline-variant/10 transition-all hover:bg-surface-container-high">
+<p class="font-label-sm text-label-sm text-primary mb-2">Oct 22</p>
+<p class="font-body-md text-body-md font-medium text-on-background line-clamp-1 mb-2">Energy Shift</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">Finally finished the project. The relief is...</p>
+</div>
+<!-- Card 3 -->
+<div class="flex-shrink-0 w-48 p-4 bg-surface-container rounded-lg border border-outline-variant/10 transition-all hover:bg-surface-container-high">
+<p class="font-label-sm text-label-sm text-primary mb-2">Oct 21</p>
+<p class="font-body-md text-body-md font-medium text-on-background line-clamp-1 mb-2">City Sounds</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2">The rhythm of the sirens and the cars...</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-[#5E89A8] text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center bg-white dark:bg-slate-900 px-2 py-3 border-t border-[#5E89A8]/10 dark:border-white/10 z-50">
+<!-- Check-in -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-[#5E89A8] dark:hover:text-[#A8C5DA] tap-highlight-transparent active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">mood</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Check-in</span>
+</button>
+<!-- Journal (Active) -->
+<button class="flex flex-col items-center justify-center bg-[#A8C5DA] dark:bg-[#5E89A8]/30 text-[#5E89A8] dark:text-white rounded-full px-4 py-1 tap-highlight-transparent active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Journal</span>
+</button>
+<!-- Stats -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-[#5E89A8] dark:hover:text-[#A8C5DA] tap-highlight-transparent active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">bar_chart</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Stats</span>
+</button>
+<!-- Explore -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-[#5E89A8] dark:hover:text-[#A8C5DA] tap-highlight-transparent active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">explore</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Explore</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1 hover:text-[#5E89A8] dark:hover:text-[#A8C5DA] tap-highlight-transparent active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Profile</span>
+</button>
+</nav>
+</body></html>
