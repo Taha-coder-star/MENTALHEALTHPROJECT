@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindEase — Complete Prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --surface:#faf9fa;--surface-low:#f4f3f5;--surface-container:#eeedef;
+  --surface-high:#e9e8e9;--surface-highest:#e3e2e3;
+  --on-surface:#1a1c1d;--on-surface-v:#42474c;
+  --primary:#466274;--on-primary:#fff;
+  --primary-container:#a8c5da;--on-primary-container:#365264;
+  --secondary:#376380;--on-secondary:#fff;
+  --secondary-container:#b1ddff;--on-secondary-container:#36627f;
+  --tertiary-container:#bdc2c7;
+  --outline:#73787c;--outline-v:#c2c7cc;
+  --error:#ba1a1a;--error-container:#ffdad6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#0f1011;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;gap:8px;}
+.app-label{color:#333;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;}
+.screen-name{color:#444;font-size:11px;letter-spacing:0.06em;}
+
+/* PHONE */
+.phone{width:375px;height:812px;background:var(--surface);border-radius:48px;overflow:hidden;position:relative;box-shadow:0 48px 96px rgba(0,0,0,0.7),0 0 0 1px #2a2a2a;border:10px solid #1e1e1e;}
+
+/* SCREENS */
+.screen{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;background:var(--surface);}
+.screen.active{display:flex;}
+
+/* STATUS BAR */
+.sb{display:flex;justify-content:space-between;align-items:center;padding:14px 22px 6px;font-size:12px;font-weight:600;color:var(--on-surface);flex-shrink:0;letter-spacing:-0.01em;}
+.sb-r{display:flex;gap:5px;align-items:center;font-size:11px;}
+
+/* BOTTOM NAV */
+.bnav{display:flex;justify-content:space-around;align-items:center;padding:10px 0 18px;background:var(--surface);border-top:1px solid var(--outline-v);flex-shrink:0;}
+.ni{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:12px;transition:background 0.2s;}
+.ni:hover{background:var(--surface-container);}
+.ni.on .nic,.ni.on .nil{color:var(--primary);}
+.nic{font-size:19px;color:var(--on-surface-v);}
+.nil{font-size:9px;color:var(--on-surface-v);letter-spacing:0.06em;text-transform:uppercase;font-weight:600;}
+
+/* SCROLLABLE */
+.sc{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.sc::-webkit-scrollbar{display:none;}
+
+/* UTILITIES */
+.btn{width:100%;padding:15px;border-radius:9999px;background:var(--primary);color:#fff;font-size:15px;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.01em;transition:opacity 0.15s;}
+.btn:hover{opacity:0.9;}
+.btn-outline{background:transparent;border:1.5px solid var(--primary);color:var(--primary);}
+.back{background:none;border:none;cursor:pointer;font-size:22px;color:var(--on-surface);padding:0;line-height:1;}
+.shdr{display:flex;align-items:center;gap:12px;padding:14px 20px;flex-shrink:0;}
+.sttl{font-size:15px;font-weight:600;color:var(--on-surface);flex:1;text-align:center;}
+.inp{width:100%;padding:14px 16px;border:1px solid rgba(26,28,29,0.18);border-radius:8px;font-size:15px;font-family:'Inter',sans-serif;background:#fff;color:var(--on-surface);outline:none;transition:border 0.15s;}
+.inp:focus{border-color:var(--primary);border-width:2px;}
+.divrow{display:flex;align-items:center;gap:10px;}
+.dline{flex:1;height:1px;background:var(--outline-v);}
+.dlbl{font-size:10px;color:var(--on-surface-v);letter-spacing:0.08em;font-weight:600;}
+.slbl{font-size:10px;color:var(--on-surface-v);letter-spacing:0.09em;text-transform:uppercase;font-weight:600;padding:14px 20px 6px;flex-shrink:0;}
+.tag{padding:6px 14px;border-radius:9999px;border:1px solid var(--outline-v);font-size:12px;color:var(--on-surface);cursor:pointer;background:#fff;transition:all 0.15s;white-space:nowrap;}
+.tag.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+
+/* ═══════════════════════════════════
+   SPLASH / WELCOME
+═══════════════════════════════════ */
+#splash{background:var(--primary-container);}
+.sp-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:48px 32px 52px;}
+.sp-rings{position:relative;width:188px;height:188px;display:flex;align-items:center;justify-content:center;}
+.sr{position:absolute;border-radius:50%;border:1.5px solid rgba(70,98,116,0.28);}
+.sr1{width:188px;height:188px;}
+.sr2{width:135px;height:135px;}
+.sr3{width:82px;height:82px;}
+.sdot{width:30px;height:30px;border-radius:50%;background:var(--primary);}
+.sp-brand{text-align:center;}
+.sp-brand h1{font-family:'Times New Roman',serif;font-size:44px;font-weight:400;color:var(--on-primary-container);letter-spacing:-0.02em;}
+.sp-brand p{font-size:14px;color:var(--primary);margin-top:8px;font-style:italic;line-height:1.5;}
+.sp-acts{width:100%;display:flex;flex-direction:column;gap:12px;align-items:center;}
+.ghost{background:none;border:none;font-size:13px;color:var(--primary);cursor:pointer;font-family:'Inter',sans-serif;}
+.ghost span{font-weight:700;text-decoration:underline;}
+
+/* ═══════════════════════════════════
+   SIGN UP
+═══════════════════════════════════ */
+#signup .sc{padding:0 20px 24px;display:flex;flex-direction:column;gap:18px;}
+.su-hdr h2{font-family:'Times New Roman',serif;font-size:28px;font-weight:400;color:var(--on-surface);}
+.su-hdr p{font-size:13px;color:var(--on-surface-v);margin-top:4px;line-height:1.5;}
+.field-group{display:flex;flex-direction:column;gap:10px;}
+.field-lbl{font-size:12px;font-weight:600;color:var(--on-surface-v);letter-spacing:0.04em;}
+.terms{font-size:11px;color:var(--on-surface-v);text-align:center;line-height:1.6;}
+.terms span{color:var(--primary);text-decoration:underline;cursor:pointer;}
+
+/* ═══════════════════════════════════
+   SIGN IN
+═══════════════════════════════════ */
+#signin .sc{padding:0 20px 24px;display:flex;flex-direction:column;gap:16px;}
+.si-hdr h2{font-family:'Times New Roman',serif;font-size:28px;font-weight:400;color:var(--on-surface);}
+.si-hdr p{font-size:13px;color:var(--on-surface-v);margin-top:4px;}
+.anon-card{background:var(--surface-low);border:1px solid var(--outline-v);border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.15s;}
+.anon-card:hover{background:var(--surface-container);}
+.aico{width:40px;height:40px;border-radius:50%;background:var(--primary-container);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.atxt{flex:1;}
+.atxt strong{font-size:14px;color:var(--on-surface);}
+.atxt span{display:block;font-size:11px;color:var(--on-surface-v);margin-top:2px;}
+.handle-note{background:var(--secondary-container);border-radius:8px;padding:9px 13px;font-size:12px;color:var(--on-secondary-container);}
+.handle-note strong{color:var(--secondary);}
+.trust{font-size:11px;color:var(--on-surface-v);text-align:center;line-height:1.6;}
+.link-btn{background:none;border:none;font-size:13px;color:var(--primary);cursor:pointer;font-family:'Inter',sans-serif;text-align:center;width:100%;font-weight:500;}
+
+/* ═══════════════════════════════════
+   DASHBOARD / HOME
+═══════════════════════════════════ */
+#home .sc{padding:0 0 8px;}
+.h-top{padding:14px 20px 0;display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0;}
+.h-top-l p{font-size:11px;color:var(--on-surface-v);}
+.h-top-l h2{font-family:'Times New Roman',serif;font-size:21px;font-weight:400;color:var(--on-surface);margin-top:2px;}
+.h-top-l h2 em{color:var(--primary);font-style:normal;}
+.bellbtn{background:none;border:none;font-size:20px;cursor:pointer;color:var(--on-surface-v);padding:4px;}
+.verse{margin:12px 20px 0;background:var(--primary);border-radius:14px;padding:16px;}
+.v-lbl{font-size:9px;color:rgba(255,255,255,0.55);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px;font-weight:600;}
+.v-txt{font-family:'Times New Roman',serif;font-size:15px;color:#fff;font-style:italic;line-height:1.6;}
+.v-cite{font-size:10px;color:rgba(255,255,255,0.5);margin-top:6px;}
+.mwgt{margin:10px 20px 0;background:var(--surface-low);border-radius:14px;padding:13px;}
+.mwgt-h{display:flex;justify-content:space-between;margin-bottom:9px;}
+.mwgt-h span{font-size:13px;color:var(--on-surface);font-weight:500;}
+.mwgt-h small{font-size:11px;color:var(--on-surface-v);}
+.memojis{display:flex;justify-content:space-between;gap:4px;}
+.me{flex:1;height:42px;border-radius:9px;background:#fff;border:1px solid var(--outline-v);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:all 0.15s;}
+.me:hover{background:var(--primary-container);border-color:var(--primary);transform:scale(1.05);}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 20px 0;}
+.tile{background:var(--surface-low);border-radius:14px;padding:14px;cursor:pointer;transition:background 0.15s;}
+.tile:hover{background:var(--surface-container);}
+.tile-ic{font-size:20px;margin-bottom:5px;}
+.tile-t{font-size:13px;font-weight:600;color:var(--on-surface);}
+.tile-s{font-size:11px;color:var(--on-surface-v);margin-top:2px;}
+.streak{margin:10px 20px 0;background:var(--surface-low);border-radius:14px;padding:11px 14px;display:flex;align-items:center;gap:9px;}
+.streak p{font-size:12px;color:var(--on-surface-v);line-height:1.4;}
+.streak p strong{color:var(--primary);}
+
+/* ═══════════════════════════════════
+   JOURNAL
+═══════════════════════════════════ */
+#journal .sc{padding:0 0 16px;}
+.j-meta{padding:4px 20px;}
+.j-date{font-size:10px;color:var(--on-surface-v);letter-spacing:0.08em;text-transform:uppercase;}
+.j-tags{display:flex;gap:5px;margin-top:6px;}
+.jtag{padding:3px 10px;border-radius:9999px;font-size:11px;font-weight:600;}
+.jtag.mood{background:var(--primary-container);color:var(--on-primary-container);}
+.jtag.cause{border:1px solid var(--outline-v);color:var(--on-surface-v);}
+.j-title{font-family:'Times New Roman',serif;font-size:26px;font-weight:400;color:var(--on-surface);padding:12px 20px 8px;}
+.j-body{font-family:'Times New Roman',serif;font-size:15px;color:var(--on-surface);line-height:1.75;padding:0 20px;}
+.past-lbl{font-size:10px;color:var(--on-surface-v);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;padding:16px 20px 8px;}
+.past-row{display:flex;gap:9px;padding:0 20px;overflow-x:auto;}
+.past-row::-webkit-scrollbar{display:none;}
+.pc{flex-shrink:0;width:92px;background:var(--surface-low);border-radius:12px;padding:10px;text-align:center;}
+.pc .d{font-size:9px;color:var(--on-surface-v);text-transform:uppercase;letter-spacing:0.06em;}
+.pc .pe{font-size:20px;margin:4px 0;}
+.pc .pd{font-size:10px;color:var(--on-surface-v);line-height:1.3;}
+.fab{position:absolute;bottom:76px;right:20px;width:48px;height:48px;border-radius:50%;background:var(--secondary);color:#fff;border:none;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(55,99,128,0.38);}
+.lock-btn{background:none;border:none;font-size:18px;cursor:pointer;color:var(--on-surface-v);margin-left:auto;padding:0;}
+
+/* ═══════════════════════════════════
+   BREATHE
+═══════════════════════════════════ */
+#breathe{background:var(--primary-container);}
+.br-hdr{display:flex;align-items:center;padding:14px 20px;flex-shrink:0;}
+.br-ttl{font-size:15px;font-weight:600;color:var(--on-primary-container);flex:1;text-align:center;}
+.br-timer{font-size:13px;color:var(--primary);font-weight:700;}
+.br-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:0 32px;}
+.br-h{font-family:'Times New Roman',serif;font-size:22px;color:var(--on-primary-container);text-align:center;line-height:1.3;}
+.br-s{font-size:12px;color:var(--primary);text-align:center;font-weight:500;}
+.br-rings{position:relative;width:210px;height:210px;display:flex;align-items:center;justify-content:center;}
+.br{position:absolute;border-radius:50%;border:1.5px solid rgba(70,98,116,0.22);animation:bra 8s ease-in-out infinite;}
+.br1{width:210px;height:210px;}
+.br2{width:152px;height:152px;animation-delay:.25s;}
+.br3{width:94px;height:94px;animation-delay:.5s;}
+.brdot{width:46px;height:46px;border-radius:50%;background:var(--primary);animation:brc 8s ease-in-out infinite;}
+@keyframes bra{0%,100%{opacity:.25;transform:scale(.94)}50%{opacity:.65;transform:scale(1.06)}}
+@keyframes brc{0%,100%{transform:scale(.82)}50%{transform:scale(1.22)}}
+.phases{display:flex;gap:7px;}
+.ph{padding:6px 14px;border-radius:9999px;font-size:12px;border:1px solid rgba(70,98,116,0.28);color:var(--primary);cursor:pointer;font-weight:500;transition:all 0.2s;}
+.ph.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+.br-ctrls{display:flex;gap:16px;align-items:center;}
+.ctrl{width:44px;height:44px;border-radius:50%;border:1px solid rgba(70,98,116,0.28);background:rgba(255,255,255,0.45);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;}
+.ctrl:hover{background:rgba(255,255,255,0.65);}
+.ctrl.main{background:var(--primary);color:#fff;border-color:var(--primary);width:52px;height:52px;font-size:20px;}
+
+/* ═══════════════════════════════════
+   RESOURCES
+═══════════════════════════════════ */
+#resources .sc{padding:0 20px 20px;}
+.res-hdr{padding:0 0 4px;}
+.res-hdr h2{font-family:'Times New Roman',serif;font-size:26px;font-weight:400;color:var(--on-surface);}
+.res-hdr p{font-size:13px;color:var(--on-surface-v);margin-top:3px;}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px;}
+.cat-card{border-radius:14px;padding:16px;cursor:pointer;transition:opacity 0.15s;}
+.cat-card:hover{opacity:0.85;}
+.cat-card .cn{font-size:13px;font-weight:600;color:var(--on-surface);margin-bottom:2px;}
+.cat-card .cc{font-size:11px;color:var(--on-surface-v);}
+.res-sec{font-size:13px;font-weight:600;color:var(--on-surface);margin:18px 0 10px;}
+.art-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--outline-v);cursor:pointer;}
+.art-row:last-child{border-bottom:none;}
+.art-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.art-info{flex:1;}
+.art-info strong{font-size:13px;color:var(--on-surface);line-height:1.3;display:block;}
+.art-info span{font-size:11px;color:var(--on-surface-v);margin-top:2px;display:block;}
+.art-arr{color:var(--on-surface-v);font-size:16px;}
+
+/* ═══════════════════════════════════
+   CIRCLE COMMUNITY
+═══════════════════════════════════ */
+#circle .sc{padding:0 0 16px;}
+.ci-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--outline-v);flex-shrink:0;}
+.ci-brand{display:flex;align-items:center;gap:10px;}
+.ci-av{width:36px;height:36px;border-radius:50%;background:var(--primary-container);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.ci-bt strong{font-family:'Times New Roman',serif;font-size:18px;color:var(--on-surface);display:block;}
+.ci-bt span{font-size:9px;color:var(--on-surface-v);letter-spacing:0.09em;text-transform:uppercase;font-weight:600;}
+.compose{margin:12px 20px 0;background:var(--surface-low);border-radius:12px;padding:13px 16px;display:flex;align-items:center;gap:9px;cursor:pointer;border:1px solid var(--outline-v);}
+.compose span{font-size:14px;color:var(--on-surface-v);}
+.fchips{display:flex;gap:7px;padding:10px 20px;overflow-x:auto;flex-shrink:0;}
+.fchips::-webkit-scrollbar{display:none;}
+.fch{padding:6px 16px;border-radius:9999px;font-size:12px;white-space:nowrap;cursor:pointer;border:1px solid var(--outline-v);color:var(--on-surface);background:#fff;font-weight:500;transition:all 0.15s;}
+.fch.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+.post{margin:0 20px 10px;background:var(--surface-low);border-radius:14px;padding:16px;}
+.post-h{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.post-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.post-m strong{font-size:14px;color:var(--on-surface);}
+.post-m span{display:block;font-size:10px;color:var(--on-surface-v);letter-spacing:0.04em;margin-top:1px;}
+.post-b{font-family:'Times New Roman',serif;font-size:15px;color:var(--on-surface);line-height:1.65;margin-bottom:12px;}
+.post-acts{display:flex;gap:16px;}
+.pact{background:none;border:none;font-size:12px;color:var(--on-surface-v);cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'Inter',sans-serif;font-weight:500;transition:color 0.15s;}
+.pact:hover{color:var(--primary);}
+
+/* ═══════════════════════════════════
+   WEEKLY PROGRESS / STATS
+═══════════════════════════════════ */
+#stats .sc{padding:0 20px 20px;}
+.wk-hdr{padding:0 0 4px;}
+.wk-hdr h2{font-family:'Times New Roman',serif;font-size:26px;font-weight:400;color:var(--on-surface);}
+.wk-hdr p{font-size:13px;color:var(--on-surface-v);margin-top:3px;line-height:1.5;}
+.streak-card{background:var(--surface-low);border-radius:14px;padding:16px;display:flex;align-items:center;gap:12px;margin-top:14px;}
+.sf{width:44px;height:44px;border-radius:50%;background:var(--primary-container);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.si strong{font-size:16px;color:var(--on-surface);display:block;}
+.si span{font-size:13px;color:var(--on-surface-v);margin-top:2px;display:block;}
+.chart-card{background:var(--surface-low);border-radius:14px;padding:16px;margin-top:10px;}
+.chart-ttl{font-size:14px;font-weight:600;color:var(--on-surface);margin-bottom:14px;}
+.bars{display:flex;align-items:flex-end;gap:8px;height:80px;}
+.bw{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;}
+.bar{width:100%;border-radius:4px 4px 0 0;min-height:6px;}
+.bday{font-size:8px;color:var(--on-surface-v);letter-spacing:0.04em;}
+.act-sec{font-size:14px;font-weight:600;color:var(--on-surface);margin:16px 0 8px;}
+.act-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--outline-v);}
+.act-item:last-child{border-bottom:none;}
+.act-em{width:40px;height:40px;border-radius:50%;background:var(--surface-container);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.act-inf{flex:1;}
+.act-inf strong{font-size:14px;color:var(--on-surface);display:block;}
+.act-inf span{font-size:12px;color:var(--on-surface-v);margin-top:1px;display:block;}
+.act-time{font-size:11px;color:var(--on-surface-v);white-space:nowrap;}
+</style>
+</head>
+<body>
+
+<div class="app-label">MindEase · Interactive Prototype</div>
+
+<div class="phone">
+
+<!-- ═══ SPLASH ═══ -->
+<div class="screen active" id="splash">
+  <div class="sb" style="background:var(--primary-container);"><span>9:41</span><div class="sb-r"><span>▲</span><span>●●●</span><span>▮</span></div></div>
+  <div class="sp-body">
+    <div class="sp-rings">
+      <div class="sr sr1"></div><div class="sr sr2"></div><div class="sr sr3"></div>
+      <div class="sdot"></div>
+    </div>
+    <div class="sp-brand">
+      <h1>MindEase</h1>
+      <p>A quiet place for the mind —<br>built for university students.</p>
+    </div>
+    <div class="sp-acts">
+      <button class="btn" onclick="go('signup')">Get started</button>
+      <button class="ghost" onclick="go('signin')">I already have an account · <span>Sign in</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SIGN UP ═══ -->
+<div class="screen" id="signup">
+  <div class="sb"><span>9:41</span><div class="sb-r"><span>▮</span></div></div>
+  <div class="shdr">
+    <button class="back" onclick="go('splash')">←</button>
+    <div class="sttl">Create account</div>
+    <div style="width:28px"></div>
+  </div>
+  <div class="sc" style="padding:0 20px 24px;display:flex;flex-direction:column;gap:16px;">
+    <div class="su-hdr">
+      <h2>Join MindEase.</h2>
+      <p>Your data stays private. We only ask what we need.</p>
+    </div>
+    <div class="field-group">
+      <div class="field-lbl">Display name (optional)</div>
+      <input class="inp" placeholder="e.g. Ayesha or quiet-river-42" type="text">
+    </div>
+    <div class="field-group">
+      <div class="field-lbl">Email</div>
+      <input class="inp" placeholder="you@university.edu" type="email">
+    </div>
+    <div class="field-group">
+      <div class="field-lbl">Password</div>
+      <input class="inp" placeholder="Minimum 8 characters" type="password">
+    </div>
+    <div class="field-group">
+      <div class="field-lbl">Confirm password</div>
+      <input class="inp" placeholder="Repeat password" type="password">
+    </div>
+    <div class="divrow"><div class="dline"></div><div class="dlbl">OR</div><div class="dline"></div></div>
+    <button class="btn btn-outline" onclick="go('home')">Continue anonymously →</button>
+    <button class="btn" onclick="go('home')" style="margin-top:4px;">Create account</button>
+    <p class="terms">By continuing you agree to our <span>Terms</span> and <span>Privacy Policy</span>.<br>Your entries are encrypted and stored locally.</p>
+    <button class="link-btn" onclick="go('signin')">Already have an account? Sign in</button>
+  </div>
+</div>
+
+<!-- ═══ SIGN IN ═══ -->
+<div class="screen" id="signin">
+  <div class="sb"><span>9:41</span><div class="sb-r"><span>▮</span></div></div>
+  <div class="shdr">
+    <button class="back" onclick="go('splash')">←</button>
+    <div class="sttl">Sign in</div>
+    <div style="width:28px"></div>
+  </div>
+  <div class="sc" style="padding:0 20px 24px;display:flex;flex-direction:column;gap:16px;">
+    <div class="si-hdr">
+      <h2>Welcome in.</h2>
+      <p>No real name needed. We never ask for personal details.</p>
+    </div>
+    <div>
+      <div class="anon-card" onclick="go('home')">
+        <div class="aico">🛡️</div>
+        <div class="atxt"><strong>Continue anonymously</strong><span>Recommended · No email required</span></div>
+        <span style="color:var(--on-surface-v);font-size:18px;">→</span>
+      </div>
+      <div class="handle-note" style="margin-top:8px;">A safe handle like <strong>quiet-river-42</strong> is generated for you.</div>
+    </div>
+    <div class="divrow"><div class="dline"></div><div class="dlbl">OR USE EMAIL</div><div class="dline"></div></div>
+    <input class="inp" placeholder="you@university.edu" type="email">
+    <input class="inp" placeholder="Password" type="password">
+    <button class="btn" onclick="go('home')">Sign in</button>
+    <p class="trust">Your entries stay on this device unless you choose to back them up.</p>
+    <button class="link-btn" onclick="go('signup')">Don't have an account? Sign up</button>
+  </div>
+</div>
+
+<!-- ═══ DASHBOARD / HOME ═══ -->
+<div class="screen" id="home">
+  <div class="sb"><span>9:41</span><div class="sb-r"><span>▲</span><span>●●●</span><span>▮</span></div></div>
+  <div class="h-top" style="flex-shrink:0;">
+    <div class="h-top-l"><p>Tuesday, 14 May</p><h2>Assalamu alaikum, <em>Ayesha.</em></h2></div>
+    <button class="bellbtn">🔔</button>
+  </div>
+  <div class="sc">
+    <div class="verse"><div class="v-lbl">A line for today</div><div class="v-txt">"Verily, with hardship comes ease."</div><div class="v-cite">Qur'an 94:6 · tap for translation</div></div>
+    <div class="mwgt">
+      <div class="mwgt-h"><span>How are you, right now?</span><small>2 min</small></div>
+      <div class="memojis">
+        <div class="me" onclick="go('breathe')">😢</div>
+        <div class="me" onclick="go('breathe')">😕</div>
+        <div class="me" onclick="go('breathe')">😐</div>
+        <div class="me" onclick="go('breathe')">🙂</div>
+        <div class="me" onclick="go('breathe')">😊</div>
+      </div>
+    </div>
+    <div class="tiles">
+      <div class="tile" onclick="go('breathe')"><div class="tile-ic">🧭</div><div class="tile-t">Check in</div><div class="tile-s">Log how you feel</div></div>
+      <div class="tile" onclick="go('breathe')"><div class="tile-ic">🌊</div><div class="tile-t">Breathe</div><div class="tile-s">4-min reset</div></div>
+      <div class="tile" onclick="go('journal')"><div class="tile-ic">📓</div><div class="tile-t">Journal</div><div class="tile-s">Yesterday's entry</div></div>
+      <div class="tile" onclick="go('resources')"><div class="tile-ic">🔖</div><div class="tile-t">Read</div><div class="tile-s">Exam stress</div></div>
+    </div>
+    <div class="streak" style="margin:10px 20px 0;">
+      <span style="font-size:18px;">🔥</span>
+      <p>You've checked in <strong>5 days in a row.</strong> Your week is trending calmer.</p>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni on" onclick="go('home')"><div class="nic">🏠</div><div class="nil">Home</div></div>
+    <div class="ni" onclick="go('breathe')"><div class="nic">😊</div><div class="nil">Reflect</div></div>
+    <div class="ni" onclick="go('circle')"><div class="nic">👥</div><div class="nil">Circle</div></div>
+    <div class="ni" onclick="go('journal')"><div class="nic">📓</div><div class="nil">Journal</div></div>
+    <div class="ni" onclick="go('resources')"><div class="nic">📖</div><div class="nil">Read</div></div>
+  </div>
+</div>
+
+<!-- ═══ JOURNAL ═══ -->
+<div class="screen" id="journal">
+  <div class="sb"><span>9:41</span><div class="sb-r"><span>▮</span></div></div>
+  <div class="shdr">
+    <button class="back" onclick="go('home')">←</button>
+    <div class="sttl">Journal</div>
+    <button class="lock-btn">🔒</button>
+  </div>
+  <div class="sc">
+    <div class="j-meta">
+      <div class="j-date">Tuesday · 14 May · 11:42 PM</div>
+      <div class="j-tags"><span class="jtag mood">Anxious</span><span class="jtag cause">Exam stress</span></div>
+    </div>
+    <div class="j-title">A long Tuesday.</div>
+    <div class="j-body">Started revising at 9, somehow it became midnight and the chapter still isn't finished. I keep refreshing the LMS like the marks for last week's quiz will appear if I look one more time.<br><br>Reminded myself: I prayed Maghrib without rushing today. That's something. I'll take it.</div>
+    <div class="past-lbl">Earlier this week</div>
+    <div class="past-row">
+      <div class="pc"><div class="d">Mon</div><div class="pe">😊</div><div class="pd">Better after a walk</div></div>
+      <div class="pc"><div class="d">Sun</div><div class="pe">😐</div><div class="pd">Quiet day</div></div>
+      <div class="pc"><div class="d">Sat</div><div class="pe">😊</div><div class="pd">Family dinner</div></div>
+      <div class="pc"><div class="d">Fri</div><div class="pe">😔</div><div class="pd">Long day</div></div>
+    </div>
+  </div>
+  <button class="fab">+</button>
+  <div class="bnav">
+    <div class="ni" onclick="go('home')"><div class="nic">🏠</div><div class="nil">Home</div></div>
+    <div class="ni" onclick="go('breathe')"><div class="nic">😊</div><div class="nil">Reflect</div></div>
+    <div class="ni" onclick="go('circle')"><div class="nic">👥</div><div class="nil">Circle</div></div>
+    <div class="ni on" onclick="go('journal')"><div class="nic">📓</div><div class="nil">Journal</div></div>
+    <div class="ni" onclick="go('resources')"><div class="nic">📖</div><div class="nil">Read</div></div>
+  </div>
+</div>
+
+<!-- ═══ BREATHE ═══ -->
+<div class="screen" id="breathe">
+  <div class="sb" style="color:var(--on-primary-container);background:var(--primary-container);"><span>9:41</span><div class="sb-r"><span>▮</span></div></div>
+  <div class="br-hdr">
+    <button class="back" style="color:var(--on-primary-container);" onclick="go('home')">←</button>
+    <div class="br-ttl">Box breathing</div>
+    <div class="br-timer">2:14</div>
+  </div>
+  <div class="br-body">
+    <div class="br-h">Breathe with the circle.</div>
+    <div class="br-s">4 in · 4 hold · 4 out · 4 hold</div>
+    <div class="br-rings">
+      <div class="br br1"></div><div class="br br2"></div><div class="br br3"></div>
+      <div class="brdot"></div>
+    </div>
+    <div class="phases">
+      <div class="ph on">Inhale</div>
+      <div class="ph">Hold</div>
+      <div class="ph">Exhale</div>
+      <div class="ph">Hold</div>
+    </div>
+    <div class="br-ctrls">
+      <button class="ctrl">☀️</button>
+      <button class="ctrl main">⏸</button>
+      <button class="ctrl">🍃</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ RESOURCES ═══ -->
+<div class="screen" id="resources">
+  <div class="sb"><span>9:41</span><div class="sb-r"><span>▮</span></div></div>
+  <div class="shdr" style="padding-bottom:0;">
+    <button class="back" onclick="go('home')">←</button>
+    <div class="sttl">Read &amp; Listen</div>
+    <div style="width:28px"></div>
+  </div>
+  <div class="sc">
+    <div class="res-hdr">
+      <h2>Read &amp; listen.</h2>
+      <p>Free, always. Written by counsellors and students.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" style="background:var(--primary-container);">
+        <div class="cn">Exam stress</div><div class="cc">12 pieces</div>
+      </div>
+      <div class="cat-card" style="background:#c8e6c9;">
+        <div class="cn">Sleep</div><div class="cc">8 pieces</div>
+      </div>
+      <div class="cat-card" style="background:var(--tertiary-container);">
+        <div class="cn">Faith &amp; calm</div><div class="cc">9 pieces</div>
+      </div>
+      <div class="cat-card" style="background:#ffe0b2;">
+        <div class="cn">Family</div><div class="cc">6 pieces</div>
+      </div>
+    </div>
+    <div class="res-sec">For you today</div>
+    <div class="art-row">
+      <div class="art-ico" style="background:var(--primary-container);">📋</div>
+      <div class="art-info"><strong>A 5-minute reset between two exams</strong><span>Exam stress · 5 min read</span></div>
+      <div class="art-arr">›</div>
+    </div>
+    <div class="art-row">
+      <div class="art-ico" style="background:var(--tertiary-container);">🌙</div>
+      <div class="art-info"><strong>When prayer feels heavy: gentle returns</strong><span>Faith &amp; calm · 7 min read</span></div>
+      <div class="art-arr">›</div>
+    </div>
+    <div class="art-row">
+      <div class="art-ico" style="background:var(--secondary-container);">💤</div>
+      <div class="art-info"><strong>Sleeping when your mind won't stop</strong><span>Sleep · 4 min read</span></div>
+      <div class="art-arr">›</div>
+    </div>
+    <div class="art-row">
+      <div class="art-ico" style="background:#ffe0b2;">👨‍👩‍👧</div>
+      <div class="art-info"><strong>Navigating family expectations at uni</strong><span>Family · 6 min read</span></div>
+      <div class="art-arr">›</div>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni" onclick="go('home')"><div class="nic">🏠</div><div class="nil">Home</div></div>
+    <div class="ni" onclick="go('breathe')"><div class="nic">😊</div><div class="nil">Reflect</div></div>
+    <div class="ni" onclick="go('circle')"><div class="nic">👥</div><div class="nil">Circle</div></div>
+    <div class="ni" onclick="go('journal')"><div class="nic">📓</div><div class="nil">Journal</div></div>
+    <div class="ni on" onclick="go('resources')"><div class="nic">📖</div><div class="nil">Read</div></div>
+  </div>
+</div>
+
+<!-- ═══ CIRCLE COMMUNITY ═══ -->
+<div class="screen" id="circle">
+  <div class="sb"><span>9:41</span><div class="sb-r"><span>▮</span></div></div>
+  <div class="ci-hdr">
+    <div class="ci-brand">
+      <div class="ci-av">🌿</div>
+      <div class="ci-bt"><strong>Circle</strong><span>Anonymous</span></div>
+    </div>
+    <span style="font-size:20px;cursor:pointer;">🔔</span>
+  </div>
+  <div class="compose"><span>✏️</span><span>Share what's on your heart...</span></div>
+  <div class="fchips">
+    <div class="fch on">All</div>
+    <div class="fch">Personal</div>
+    <div class="fch">Growth</div>
+    <div class="fch">Gratitude</div>
+    <div class="fch">Faith</div>
+    <div class="fch">Exams</div>
+  </div>
+  <div class="sc">
+    <div class="post">
+      <div class="post-h">
+        <div class="post-av" style="background:var(--primary-container);">🌿</div>
+        <div class="post-m"><strong>Grateful Soul</strong><span>JUST NOW · GRATITUDE</span></div>
+      </div>
+      <div class="post-b">Finding peace in the simple morning light today. The world feels a little softer when we take a moment to just breathe.</div>
+      <div class="post-acts"><button class="pact">🤍 Hug</button><button class="pact">💬 Reply</button></div>
+    </div>
+    <div class="post">
+      <div class="post-h">
+        <div class="post-av" style="background:var(--secondary-container);">🤍</div>
+        <div class="post-m"><strong>Steady Heart</strong><span>15M AGO · GROWTH</span></div>
+      </div>
+      <div class="post-b">Learning that letting go isn't a single act, but a practice. Today, I am choosing to release the need to control every outcome.</div>
+      <div class="post-acts"><button class="pact">🤍 Hug</button><button class="pact">💬 Reply</button></div>
+    </div>
+    <div class="post">
+      <div class="post-h">
+        <div class="post-av" style="background:var(--tertiary-container);">🌙</div>
+        <div class="post-m"><strong>quiet-river-42</strong><span>1H AGO · EXAMS</span></div>
+      </div>
+      <div class="post-b">4th semester feels like a fog sometimes. Anyone else just sitting through lectures not remembering a thing? It helps knowing others feel it too.</div>
+      <div class="post-acts"><button class="pact">🤍 Hug</button><button class="pact">💬 Reply</button></div>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni" onclick="go('home')"><div class="nic">🏠</div><div class="nil">Home</div></div>
+    <div class="ni" onclick="go('breathe')"><div class="nic">😊</div><div class="nil">Reflect</div></div>
+    <div class="ni on" onclick="go('circle')"><div class="nic">👥</div><div class="nil">Circle</div></div>
+    <div class="ni" onclick="go('journal')"><div class="nic">📓</div><div class="nil">Journal</div></div>
+    <div class="ni" onclick="go('resources')"><div class="nic">📖</div><div class="nil">Read</div></div>
+  </div>
+</div>
+
+<!-- ═══ WEEKLY PROGRESS ═══ -->
+<div class="screen" id="stats">
+  <div class="sb"><span>9:41</span><div class="sb-r"><span>▮</span></div></div>
+  <div class="shdr" style="padding-bottom:0;">
+    <button class="back" onclick="go('home')">←</button>
+    <div class="sttl">Your week</div>
+    <div style="width:28px"></div>
+  </div>
+  <div class="sc">
+    <div class="wk-hdr">
+      <h2>Your week.</h2>
+      <p>Consistent tracking builds resilience. Review your recent emotional landscape to identify patterns.</p>
+    </div>
+    <div class="streak-card">
+      <div class="sf">🔥</div>
+      <div class="si"><strong>7 Day Streak</strong><span>You're on a steady path.</span></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-ttl">Mood Trends</div>
+      <div class="bars">
+        <div class="bw"><div class="bar" style="height:32%;background:var(--primary);"></div><div class="bday">Mon</div></div>
+        <div class="bw"><div class="bar" style="height:52%;background:var(--primary-container);"></div><div class="bday">Tue</div></div>
+        <div class="bw"><div class="bar" style="height:44%;background:var(--primary-container);"></div><div class="bday">Wed</div></div>
+        <div class="bw"><div class="bar" style="height:68%;background:var(--primary);"></div><div class="bday">Thu</div></div>
+        <div class="bw"><div class="bar" style="height:42%;background:var(--primary-container);"></div><div class="bday">Fri</div></div>
+        <div class="bw"><div class="bar" style="height:78%;background:var(--primary);"></div><div class="bday">Sat</div></div>
+        <div class="bw"><div class="bar" style="height:58%;background:var(--primary-container);"></div><div class="bday">Sun</div></div>
+      </div>
+    </div>
+    <div class="act-sec">Recent Activity</div>
+    <div class="act-item">
+      <div class="act-em">😊</div>
+      <div class="act-inf"><strong>Calm</strong><span>Morning Check-in</span></div>
+      <div class="act-time">Today, 8:30 AM</div>
+    </div>
+    <div class="act-item">
+      <div class="act-em">🤔</div>
+      <div class="act-inf"><strong>Reflective</strong><span>Journal Entry</span></div>
+      <div class="act-time">Yesterday, 9:15 PM</div>
+    </div>
+    <div class="act-item">
+      <div class="act-em">⚡</div>
+      <div class="act-inf"><strong>Energized</strong><span>Afternoon Check-in</span></div>
+      <div class="act-time">Yesterday, 2:00 PM</div>
+    </div>
+    <div class="act-item">
+      <div class="act-em">😔</div>
+      <div class="act-inf"><strong>Low</strong><span>Evening Check-in</span></div>
+      <div class="act-time">2 days ago, 10:00 PM</div>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni" onclick="go('home')"><div class="nic">🏠</div><div class="nil">Home</div></div>
+    <div class="ni on"><div class="nic">📊</div><div class="nil">Progress</div></div>
+    <div class="ni" onclick="go('circle')"><div class="nic">👥</div><div class="nil">Circle</div></div>
+    <div class="ni" onclick="go('journal')"><div class="nic">📓</div><div class="nil">Journal</div></div>
+    <div class="ni" onclick="go('resources')"><div class="nic">📖</div><div class="nil">Read</div></div>
+  </div>
+</div>
+
+</div>
+
+<div class="screen-name" id="current-screen-label">Welcome / Splash</div>
+
+<script>
+const names={
+  splash:'Welcome / Splash',signup:'Sign Up',signin:'Sign In',
+  home:'Dashboard / Home',journal:'Journal',breathe:'Breathe',
+  resources:'Resources',circle:'Circle Community',stats:'Weekly Progress'
+};
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('current-screen-label').textContent=names[id]||id;
+}
+// Breathe phase cycle
+const phs=document.querySelectorAll('.ph');
+let cp=0;
+setInterval(()=>{
+  phs.forEach(p=>p.classList.remove('on'));
+  cp=(cp+1)%phs.length;
+  phs[cp].classList.add('on');
+},2000);
+</script>
+</body>
+</html>
